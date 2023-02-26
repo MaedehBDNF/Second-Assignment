@@ -40,16 +40,12 @@ public class WeatherApp {
         }
     }
 
-    // TODO: Write getTemperature function returns celsius temperature of city by given json string
-    public static double getTemperature(String weatherJson){
-        double answer = 0.0;
-        return answer;
+    public static double getTemperature(JSONObject weatherJson) {
+        return (double) ((JSONObject) weatherJson.get("current")).get("temp_c");
     }
 
-    // TODO: Write getHumidity function returns humidity percentage of city by given json string
-    public static int getHumidity(String weatherJson){
-        int answer = 0;
-        return answer;
+    public static int getHumidity(JSONObject weatherJson) {
+        return (int) (long) ((JSONObject) weatherJson.get("current")).get("humidity");
     }
 
     private static JSONObject jsonParser(String jsonStr) throws ParseException {
