@@ -8,11 +8,19 @@ import org.json.simple.parser.*;
 import java.util.Scanner;
 
 public class WeatherApp {
-    // Copy your API-KEY here
-    public final static String apiKey = "API-KEY";
-    // TODO: Write main function
-    public static void main(String[] args) {
+    public final static String apiKey = "07a12f7837574c17828115031232602";
 
+    public static void main(String[] args) throws ParseException {
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Enter the name of city in capital letter: ");
+        String cityName = in.nextLine();
+
+        String weatherJSONString = getWeatherData(cityName);
+        JSONObject weatherObject = jsonParser(weatherJSONString);
+
+        System.out.println("Temperature: " + getTemperature(weatherObject));
+        System.out.println("Humidity: " + getHumidity(weatherObject));
     }
 
     /**
