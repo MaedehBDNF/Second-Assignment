@@ -2,7 +2,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
+
 import java.util.Scanner;
 
 public class WeatherApp {
@@ -48,5 +50,10 @@ public class WeatherApp {
     public static int getHumidity(String weatherJson){
         int answer = 0;
         return answer;
+    }
+
+    private static JSONObject jsonParser(String jsonStr) throws ParseException {
+        JSONParser parser = new JSONParser();
+        return (JSONObject) parser.parse(jsonStr);
     }
 }
